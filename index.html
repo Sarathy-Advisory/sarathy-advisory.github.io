@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarathy Advisory</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'JetBrains Mono', monospace;
+      background-color: #f9f9f9;
+      color: #111;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    p {
+      max-width: 700px;
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+    }
+    ul {
+      margin-top: 2rem;
+      list-style: none;
+      padding: 0;
+      font-size: 1rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    a {
+      margin-top: 2rem;
+      text-decoration: none;
+      color: #0066cc;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .divider {
+      margin: 2rem 0;
+      border-top: 1px solid #ccc;
+      width: 60%;
+    }
+ li.faded {
+      opacity: 0.3;
+    }
+ul li ul li {
+      color: #0077cc;
+    }
+    ul > li.active {
+      font-weight: bold;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const topItems = document.querySelectorAll("ul > li");
+    topItems.forEach(item => {
+      const sublist = item.querySelector("ul");
+      if (sublist) {
+        sublist.style.display = "none";
+        item.style.cursor = "pointer";
+        item.addEventListener("click", () => {
+          const isVisible = sublist.style.display === "block";
+          topItems.forEach(other => {
+            const otherSub = other.querySelector("ul");
+            if (other !== item && otherSub) {
+              otherSub.style.display = "none";
+              other.classList.add("faded");
+            } else {
+              other.classList.remove("faded");
+            }
+          });
+          sublist.style.display = isVisible ? "none" : "block";
+        });
+      }
+    });
+  });
+</script>
+</head>
+<body>
+
+<svg width="50" height="60" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 1rem; transform: scaleX(-1);">
+    <polygon points="50,30 90,90 10,90" fill="none" stroke="#333" stroke-width="2" />
+    <polygon points="50,70 90,10 10,10" fill="none" stroke="#333" stroke-width="2" />
+  </svg>
+
+  <h1>Sarathy Advisory</h1>
+
+  <p>
+    I help organizations analyze, design, and deploy AI systems <br>
+    that reason, align, and comply.<br><br>
+    I architect, advise, audit, teach, and build prototypes.<br>
+	I do not write production code or manage DevOps teams.<br><br>
+    <strong>Why choose me?</strong> I combine a decade of AI research<br>
+    with a decade of legal insights to help you integrate AI<br>
+    that is powerful, principled, and explainable.
+  </p>
+
+  <div class="divider"></div>
+
+  <ul>
+  <li>
+    → AI Use Case Vetting & Prioritization
+    <ul>
+      <li>You have 100 AI ideas. I'll find the 3 that won’t cost you time and reputation.</li>
+    </ul><br>
+  </li>
+  <li>
+    → AI Safety & Trust Blueprint
+    <ul>
+      <li>You're building with LLMs. I'll ensure you have guardrails, fallback plans, and user trust.</li>
+    </ul><br>
+  </li>
+  <li>
+    → Knowledge Architecture for Reasoning Systems
+    <ul>
+      <li>You need an intelligent layer on top of your content. I'll design the structure.</li>
+    </ul><br>
+  </li>
+  <li>
+    → Executive & Board-Level AI Training
+    <ul>
+      <li>Training your leadership team to make confident, informed AI investments.</li>
+    </ul><br>
+  </li>
+  <li>
+    → AI IP & Patent Due Diligence
+    <ul>
+      <li>Reviewing AI patents, licensing, and IP claims so you don't buy snake oil.</li>
+    </ul><br>
+  </li>
+  <li>
+    → Human-AI Interaction & Governance Strategy
+    <ul>
+      <li>Designing policies and interaction frameworks to ensure alignment, transparency, and user trust.</li>
+    </ul><br>
+  </li>
+</ul>
+
+  <a href="mailto:vasanth@alum.mit.edu">Contact me</a>
+
+</body>
+</html>
+
+
+
