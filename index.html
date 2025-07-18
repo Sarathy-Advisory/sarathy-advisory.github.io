@@ -1,157 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sarathy Advisory</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'JetBrains Mono', monospace;
-      background-color: #f9f9f9;
-      color: #111;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.5rem;
-    }
-    p {
-      max-width: 700px;
-      font-size: 1.1rem;
-      margin-top: 1.5rem;
-    }
-    ul {
-      margin-top: 2rem;
-      list-style: none;
-      padding: 0;
-      font-size: 1rem;
-    }
-    li {
-      margin-bottom: 0.5rem;
-    }
-    a {
-      margin-top: 2rem;
-      text-decoration: none;
-      color: #0066cc;
-      font-weight: bold;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .divider {
-      margin: 2rem 0;
-      border-top: 1px solid #ccc;
-      width: 60%;
-    }
- li.faded {
-      opacity: 0.3;
-    }
-ul li ul li {
-      color: #0077cc;
-    }
-    ul > li.active {
-      font-weight: bold;
-    }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const topItems = document.querySelectorAll("ul > li");
-    topItems.forEach(item => {
-      const sublist = item.querySelector("ul");
-      if (sublist) {
-        sublist.style.display = "none";
-        item.style.cursor = "pointer";
-        item.addEventListener("click", () => {
-          const isVisible = sublist.style.display === "block";
-          topItems.forEach(other => {
-            const otherSub = other.querySelector("ul");
-            if (other !== item && otherSub) {
-              otherSub.style.display = "none";
-              other.classList.add("faded");
-            } else {
-              other.classList.remove("faded");
-            }
-          });
-          sublist.style.display = isVisible ? "none" : "block";
-        });
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sarathy Advisory</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: "JetBrains Mono", monospace;
+        background-color: #f9f9f9;
+        color: #111;
       }
-    });
-  });
-</script>
-</head>
-<body>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1rem;
+        box-sizing: border-box;
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin: 1rem 0;
+      }
+      p {
+        max-width: 700px;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+      }
+      ul {
+        margin-top: 2rem;
+        list-style: none;
+        padding: 0;
+        font-size: 1rem;
+      }
+      li {
+        margin-bottom: 0.5rem;
+      }
+      a {
+        margin-top: 2rem;
+        text-decoration: none;
+        color: #0066cc;
+        font-weight: bold;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .divider {
+        margin: 2rem 0;
+        border-top: 1px solid #ccc;
+        width: 60%;
+      }
+      li.faded {
+        opacity: 0.3;
+      }
+      ul li ul li {
+        color: #0077cc;
+      }
+      ul > li.active {
+        font-weight: bold;
+      }
 
-<svg width="50" height="60" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 1rem; transform: scaleX(-1);">
-    <polygon points="50,30 90,90 10,90" fill="none" stroke="#333" stroke-width="2" />
-    <polygon points="50,70 90,10 10,10" fill="none" stroke="#333" stroke-width="2" />
-  </svg>
+      .services-heading {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #333;
+        text-align: center;
+      }
 
-  <h1>Sarathy Advisory</h1>
+      .services-list {
+        max-width: 700px;
+        margin: 0 auto;
+      }
 
-  <p>
-    I help organizations analyze, design, and deploy AI systems <br>
-    that reason, align, and comply.<br><br>
-    I architect, advise, audit, teach, and build prototypes.<br>
-	I do not write production code or manage DevOps teams.<br><br>
-    <strong>Why choose me?</strong> I combine a decade of AI research<br>
-    with a decade of legal insights to help you integrate AI<br>
-    that is powerful, principled, and explainable.
-  </p>
+      .services-list > li {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        background-color: #fafafa;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
 
-  <div class="divider"></div>
+      .services-list > li:hover {
+        border-color: #0066cc;
+        background-color: #f8f9ff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
-  <ul>
-  <li>
-    → AI Use Case Vetting & Prioritization
-    <ul>
-      <li>You have 100 AI ideas. I'll find the 3 that won’t cost you time and reputation.</li>
-    </ul><br>
-  </li>
-  <li>
-    → AI Safety & Trust Blueprint
-    <ul>
-      <li>You're building with LLMs. I'll ensure you have guardrails, fallback plans, and user trust.</li>
-    </ul><br>
-  </li>
-  <li>
-    → Knowledge Architecture for Reasoning Systems
-    <ul>
-      <li>You need an intelligent layer on top of your content. I'll design the structure.</li>
-    </ul><br>
-  </li>
-  <li>
-    → Executive & Board-Level AI Training
-    <ul>
-      <li>Training your leadership team to make confident, informed AI investments.</li>
-    </ul><br>
-  </li>
-  <li>
-    → AI IP & Patent Due Diligence
-    <ul>
-      <li>Reviewing AI patents, licensing, and IP claims so you don't buy snake oil.</li>
-    </ul><br>
-  </li>
-  <li>
-    → Human-AI Interaction & Governance Strategy
-    <ul>
-      <li>Designing policies and interaction frameworks to ensure alignment, transparency, and user trust.</li>
-    </ul><br>
-  </li>
-</ul>
+      .services-list > li strong {
+        color: #0066cc;
+        font-size: 1.1rem;
+      }
 
-  <a href="mailto:vasanth@alum.mit.edu">Contact me</a>
+      .services-list ul {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+      }
 
-</body>
+      .services-list ul li {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      .about p {
+        max-width: 600px;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .process {
+        max-width: 600px;
+      }
+
+      .process h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .process ol {
+        text-align: left;
+        padding-left: 1.5rem;
+      }
+
+      .process li {
+        margin-bottom: 0.8rem;
+        line-height: 1.5;
+      }
+
+      .cta-section {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border: 2px solid #0066cc;
+        border-radius: 8px;
+        background-color: #f8f9ff;
+      }
+
+      .cta-section p {
+        margin: 0 0 1rem 0;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        background-color: #0066cc;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: background-color 0.2s;
+      }
+
+      .cta-button:hover {
+        background-color: #0052a3;
+        text-decoration: none;
+      }
+
+      /* Mobile responsive styles */
+      @media (max-width: 768px) {
+        body {
+          padding: 1rem 0.5rem;
+          justify-content: flex-start;
+          min-height: 100vh;
+        }
+        h1 {
+          font-size: 2rem;
+          margin: 0.5rem 0;
+        }
+        p {
+          font-size: 1rem;
+          max-width: 100%;
+          padding: 0 1rem;
+        }
+        ul {
+          font-size: 0.9rem;
+          padding: 0 1rem;
+        }
+        .divider {
+          width: 80%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.8rem;
+        }
+        p {
+          font-size: 0.95rem;
+        }
+        ul {
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const topItems = document.querySelectorAll("ul > li");
+        topItems.forEach((item) => {
+          const sublist = item.querySelector("ul");
+          if (sublist) {
+            sublist.style.display = "none";
+            item.style.cursor = "pointer";
+            item.addEventListener("click", () => {
+              const isVisible = sublist.style.display === "block";
+              topItems.forEach((other) => {
+                const otherSub = other.querySelector("ul");
+                if (other !== item && otherSub) {
+                  otherSub.style.display = "none";
+                  other.classList.add("faded");
+                } else {
+                  other.classList.remove("faded");
+                }
+              });
+              sublist.style.display = isVisible ? "none" : "block";
+            });
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <svg
+      width="50"
+      height="60"
+      viewBox="0 0 100 120"
+      xmlns="http://www.w3.org/2000/svg"
+      style="margin-bottom: 1rem; transform: scaleX(-1)"
+    >
+      <polygon
+        points="50,30 90,90 10,90"
+        fill="none"
+        stroke="#333"
+        stroke-width="2"
+      />
+      <polygon
+        points="50,70 90,10 10,10"
+        fill="none"
+        stroke="#333"
+        stroke-width="2"
+      />
+    </svg>
+
+    <h1>Sarathy Advisory</h1>
+
+    <p>
+      <strong
+        >AI strategy advisor helping organizations integrate AI with deep
+        technical analysis.</strong
+      ><br />
+      <br />
+      Combining a decade of AI research with nearly a decade of legal expertise
+      to vet AI initiatives, design safety frameworks, and ensure your AI
+      strategy is powerful, principled, and explainable.
+    </p>
+
+    <div class="divider"></div>
+
+    <h3 class="services-heading">Services</h3>
+    <ul class="services-list">
+      <li>
+        <strong>AI Use Case Vetting & Prioritization</strong>
+        <ul>
+          <li>
+            Find the 3 AI initiatives that won't cost you time and reputation
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>AI Reasoning & Explainable AI Design</strong>
+        <ul>
+          <li>
+            Build neuro-symbolic systems that reason clearly and explain their
+            decisions
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>AI Safety & Trust Blueprint</strong>
+        <ul>
+          <li>
+            Design guardrails and fallback plans for trustworthy AI systems
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>AI IP Due Diligence & Strategy</strong>
+        <ul>
+          <li>
+            Review patents, licensing, and IP claims with 8+ years of legal
+            expertise
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Executive AI Training</strong>
+        <ul>
+          <li>
+            Train leadership teams to make confident, informed AI investments
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Human-AI Governance Strategy</strong>
+        <ul>
+          <li>
+            Design policies and frameworks for alignment, transparency, and
+            trust
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <div class="about">
+      <p>
+        <strong>About me:</strong> Principal Research Scientist with a Ph.D. in
+        Computer Science & Cognitive Science, specializing in Neuro-Symbolic AI
+        and Generative AI. I've secured $5M+ in funding to build and deploy
+        advanced NLP/LLM systems, driving end-to-end solutions from prototyping
+        through evaluation. My work in AI reasoning, explainable AI, and
+        responsible AI combines social metacognition models with human-centered
+        design for transparent, trustworthy decision support. I've led
+        multidisciplinary teams, taught graduate and executive courses, and
+        translated complex concepts into actionable strategies for diverse
+        audiences.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="process">
+      <h3>How I Work</h3>
+      <ol>
+        <li>
+          <strong>Assess</strong> your current AI landscape and identify
+          high-impact opportunities
+        </li>
+        <li>
+          <strong>Design</strong> safety-first architectures that align with
+          your business goals
+        </li>
+        <li>
+          <strong>Implement</strong> governance frameworks and train your teams
+        </li>
+        <li>
+          <strong>Monitor</strong> and refine systems for ongoing compliance and
+          performance
+        </li>
+      </ol>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cta-section">
+      <p>Ready to build AI that works for your business?</p>
+      <a href="mailto:vasanth@alum.mit.edu" class="cta-button"
+        >Schedule a Consultation</a
+      >
+      <br /><br />
+      <small
+        >Or email me directly:
+        <a href="mailto:vasanth@alum.mit.edu">vasanth@alum.mit.edu</a></small
+      >
+    </div>
+  </body>
 </html>
-
-
-
